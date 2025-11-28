@@ -13,7 +13,11 @@ export const listings = [
     publicFacilities: ["停車位", "電梯", "管理員"],
     extraFees: { water: 150, electricity: 5, management: 200 },
     notes: "近便利商店，生活機能佳",
-    photos: ["/api/placeholder/400/300", "/api/placeholder/400/300"],
+    photos: [
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400&h=300&fit=crop"
+    ],
     location: { lat: 24.9675, lng: 121.1950 },
     distanceToCampusMeters: 800,
     avgRating: 4.2,
@@ -32,7 +36,10 @@ export const listings = [
     publicFacilities: ["洗衣機", "冰箱", "客廳", "廚房"],
     extraFees: { water: 200, electricity: 4, management: 0 },
     notes: "室友都是學生，環境單純",
-    photos: ["/api/placeholder/400/300"],
+    photos: [
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop"
+    ],
     location: { lat: 24.9650, lng: 121.1920 },
     distanceToCampusMeters: 1200,
     avgRating: 3.8,
@@ -51,7 +58,12 @@ export const listings = [
     publicFacilities: ["電梯", "管理員", "停車位", "健身房"],
     extraFees: { water: 0, electricity: 6, management: 300 },
     notes: "全新裝潢，設備齊全",
-    photos: ["/api/placeholder/400/300", "/api/placeholder/400/300", "/api/placeholder/400/300"],
+    photos: [
+      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=400&h=300&fit=crop"
+    ],
     location: { lat: 24.9580, lng: 121.2010 },
     distanceToCampusMeters: 2000,
     avgRating: 4.7,

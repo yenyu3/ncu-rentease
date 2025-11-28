@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
+import Logo from '../components/Logo';
 import ListingDetailModal from '../components/ListingDetailModal';
 import useStore from '../store/useStore';
 import { getDistanceInfo } from '../utils/distanceUtils';
@@ -48,8 +49,8 @@ const Map = () => {
   return (
     <div className="min-h-screen bg-gray-50 pb-20">
       <div className="bg-primary text-white p-4">
-        <h1 className="text-xl font-bold">地圖找房</h1>
-        <p className="text-sm text-primary-100">在地圖上探索房源位置</p>
+        <Logo size="md" />
+        <p className="text-sm text-primary-100 mt-2">在地圖上探索房源位置</p>
       </div>
 
       <LoadScript googleMapsApiKey="AIzaSyAE5QrIwGsTev56W6RsilmK07Uc1rYqgfc">
