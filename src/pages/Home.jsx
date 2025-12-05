@@ -35,56 +35,57 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary via-primary to-accent pb-20">
-      {/* Hero Section - 固定高度確保一致性 */}
-      <div className="h-screen px-4 pt-8 pb-12 flex flex-col">
+      {/* Hero Section - 調整高度 */}
+      <div className="h-[110vh] px-4 pt-8 pb-12 flex flex-col justify-center">
         <Logo size="lg" />
         
         {/* 主搜尋區域 */}
-        <div className="mt-8 mb-6 flex-1 flex flex-col justify-center">
-          <h2 className="text-2xl font-bold text-white mb-2">找到你的理想租屋</h2>
-          <p className="text-primary-100 mb-6">中大周邊優質房源，一鍵搜尋</p>
-          
-          {/* 大搜尋框 */}
-          <div className="relative mb-8">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={24} />
-            <input
-              type="text"
-              placeholder="搜尋地址、房源標題或關鍵字..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 text-lg border-0 rounded-2xl shadow-lg focus:outline-none focus:ring-4 focus:ring-white/30"
-            />
-          </div>
-          
-          {/* 快速統計 */}
-          <div className="grid grid-cols-3 gap-4 mb-6">
-            <div className="bg-white/20 backdrop-blur-sm rounded-xl p-3 text-center">
-              <div className="text-2xl font-bold text-white">{filteredListings.length}</div>
-              <div className="text-xs text-primary-100">可租房源</div>
+        <div className="mt-8 mb-6 flex-1 flex flex-col justify-center items-center">
+          <div className="w-full max-w-sm">
+            <h2 className="text-2xl font-bold text-white mb-2 text-center">找到你的理想租屋</h2>
+            <p className="text-primary-100 mb-6 text-center">中大周邊優質房源，一鍵搜尋</p>
+            
+            {/* 大搜尋框 */}
+            <div className="relative mb-8">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={24} />
+              <input
+                type="text"
+                placeholder="搜尋地址、房源標題或關鍵字..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-12 pr-4 py-4 text-lg border-0 rounded-2xl shadow-lg focus:outline-none focus:ring-4 focus:ring-white/30"
+              />
             </div>
-            <div className="bg-white/20 backdrop-blur-sm rounded-xl p-3 text-center">
-              <div className="text-2xl font-bold text-white">{avgRating}</div>
-              <div className="text-xs text-primary-100">平均評分</div>
+            
+            {/* 快速統計 */}
+            <div className="grid grid-cols-3 gap-3 mb-6">
+              <div className="bg-white/20 backdrop-blur-sm rounded-xl p-3 text-center">
+                <div className="text-2xl font-bold text-white">{filteredListings.length}</div>
+                <div className="text-xs text-primary-100">可租房源</div>
+              </div>
+              <div className="bg-white/20 backdrop-blur-sm rounded-xl p-3 text-center">
+                <div className="text-2xl font-bold text-white">{avgRating}</div>
+                <div className="text-xs text-primary-100">平均評分</div>
+              </div>
+              <div className="bg-white/20 backdrop-blur-sm rounded-xl p-3 text-center">
+                <div className="text-2xl font-bold text-white">{avgRent}</div>
+                <div className="text-xs text-primary-100">平均租金</div>
+              </div>
             </div>
-            <div className="bg-white/20 backdrop-blur-sm rounded-xl p-3 text-center">
-              <div className="text-2xl font-bold text-white">{avgRent}</div>
-              <div className="text-xs text-primary-100">平均租金</div>
-            </div>
+            
+            {/* 篩選按鈕 */}
+            <button
+              onClick={() => setShowFilters(!showFilters)}
+              className="w-full bg-white/20 backdrop-blur-sm text-white py-3 rounded-xl font-medium mb-8"
+            >
+              {showFilters ? '隱藏篩選條件' : '顯示篩選條件'}
+            </button>
           </div>
           
           {/* 向下滑動提示 */}
-          <div className="text-center text-white/70 animate-bounce mb-6">
-            <div className="text-sm mb-2">向下滑動查看房源</div>
+          <div className="text-center text-white/70 animate-bounce">
             <div className="text-2xl">↓</div>
           </div>
-          
-          {/* 篩選按鈕 */}
-          <button
-            onClick={() => setShowFilters(!showFilters)}
-            className="w-full bg-white/20 backdrop-blur-sm text-white py-3 rounded-xl font-medium"
-          >
-            {showFilters ? '隱藏篩選條件' : '顯示篩選條件'}
-          </button>
         </div>
       </div>
       
