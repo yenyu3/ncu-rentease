@@ -116,7 +116,7 @@ const Favorites = () => {
                   </div>
 
                   {/* 房源卡片 */}
-                  <div className="p-4">
+                  <div onClick={() => handleListingClick(listing)} className="cursor-pointer">
                     <ListingCard listing={listing} onClick={handleListingClick} />
                   </div>
 

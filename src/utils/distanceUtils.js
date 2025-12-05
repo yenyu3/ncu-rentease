@@ -39,6 +39,13 @@ export const recommendSongs = (walkingTimeMinutes) => {
   return shuffled.slice(0, Math.min(songCount, 5)); // 最多推薦5首
 };
 
+// 開啟 Spotify 播放清單
+export const openSpotifyPlaylist = (song) => {
+  if (song.spotifyUrl) {
+    window.open(song.spotifyUrl, '_blank');
+  }
+};
+
 // 格式化距離顯示
 export const formatDistance = (distanceMeters) => {
   if (distanceMeters < 1000) {

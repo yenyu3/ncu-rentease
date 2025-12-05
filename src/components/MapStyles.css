@@ -1,0 +1,18 @@
+/* Leaflet 地圖樣式修正 */
+.leaflet-popup-pane {
+  z-index: 700 !important;
+}
+
+.leaflet-control-container {
+  z-index: 800 !important;
+}
+
+.custom-div-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* 確保地圖不會覆蓋彈窗 */
+.leaflet-container {
+  z-index: 1 !important;
+}

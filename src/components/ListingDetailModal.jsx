@@ -1,11 +1,9 @@
 import { useState } from 'react';
-import { X, MapPin, Star, Phone, ChevronLeft, ChevronRight, Music, Play } from 'lucide-react';
-import { getDistanceInfo } from '../utils/distanceUtils';
-import MusicPlayer from './MusicPlayer';
+import { X, MapPin, Star, Phone, ChevronLeft, ChevronRight, Music, ExternalLink } from 'lucide-react';
+import { getDistanceInfo, openSpotifyPlaylist } from '../utils/distanceUtils';
 
 const ListingDetailModal = ({ listing, isOpen, onClose }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [showMusicPlayer, setShowMusicPlayer] = useState(false);
   
   if (!isOpen || !listing) return null;
 
@@ -24,8 +22,8 @@ const ListingDetailModal = ({ listing, isOpen, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-[9999] flex items-center justify-center p-4">
+      <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto mb-20 relative z-[10000]">
         <div className="sticky top-0 bg-white border-b p-4 flex justify-between items-center z-10">
           <h2 className="text-xl font-bold text-accent line-clamp-1 flex-1 mr-4">{listing.title}</h2>
           <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full">
@@ -119,27 +117,27 @@ const ListingDetailModal = ({ listing, isOpen, onClose }) => {
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="text-sm font-medium flex items-center">
                     <Music size={16} className="mr-1" />
-                    推薦步行歌單
+                    Taylor Swift 步行歌單
                   </h4>
-                  <button
-                    onClick={() => setShowMusicPlayer(true)}
-                    className="bg-primary text-white px-3 py-1 rounded-full text-xs flex items-center hover:bg-primary/80"
-                  >
-                    <Play size={12} className="mr-1" />
-                    播放
-                  </button>
                 </div>
                 <div className="space-y-2">
                   {distanceInfo.recommendedSongs.slice(0, 3).map((song, index) => (
-                    <div key={song.id} className="bg-white/80 rounded-lg px-3 py-2 flex items-center justify-between">
-                      <div>
+                    <button
+                      key={song.id}
+                      onClick={() => openSpotifyPlaylist(song)}
+                      className="w-full bg-white/80 rounded-lg px-3 py-2 flex items-center justify-between hover:bg-white transition-colors"
+                    >
+                      <div className="text-left">
                         <div className="text-sm font-medium">{song.title}</div>
-                        <div className="text-xs text-gray-600">{song.artist}</div>
+                        <div className="text-xs text-gray-600">{song.artist} • {song.album}</div>
                       </div>
-                      <div className="text-xs text-gray-500">
-                        {song.lengthMinutes.toFixed(1)}分
+                      <div className="flex items-center">
+                        <span className="text-xs text-gray-500 mr-2">
+                          {song.lengthMinutes.toFixed(1)}分
+                        </span>
+                        <ExternalLink size={12} className="text-green-600" />
                       </div>
-                    </div>
+                    </button>
                   ))}
                   {distanceInfo.recommendedSongs.length > 3 && (
                     <div className="text-xs text-gray-500 text-center py-1">
@@ -199,20 +197,13 @@ const ListingDetailModal = ({ listing, isOpen, onClose }) => {
 
           {/* 備註 */}
           {listing.notes && (
-            <div className="mb-4">
+            <div className="mb-6">
               <h3 className="font-semibold mb-2">備註</h3>
               <p className="text-sm text-gray-600">{listing.notes}</p>
             </div>
           )}
         </div>
       </div>
-      
-      {/* 音樂播放器 */}
-      <MusicPlayer 
-        songs={distanceInfo.recommendedSongs}
-        isVisible={showMusicPlayer}
-        onClose={() => setShowMusicPlayer(false)}
-      />
     </div>
   );
 };
