@@ -171,7 +171,7 @@ const mood = walkingTime > 15 ? 'energetic' :
 
 #### 步驟 1: 複製專案
 ```bash
-git clone <repository-url>
+git clone https://github.com/yenyu3/ncu-rentease
 cd ncu_rentease/react-native
 ```
 
